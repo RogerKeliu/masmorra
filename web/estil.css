@@ -1,0 +1,271 @@
+/* La Masmorra — estils de la versió web (no cal tocar-los) */
+
+:root {
+    --fons: #14111c;
+    --pedra: #221d2e;
+    --pedra-clara: #2f2840;
+    --vora: #463b5c;
+    --text: #ece6f5;
+    --text-suau: #a99fbd;
+    --or: #f2c14e;
+    --vida: #4fc36b;
+    --vida-monstre: #e0524f;
+    --blau: #7aa7ff;
+    --pixel: "Press Start 2P", ui-monospace, monospace;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    background: radial-gradient(circle at 50% 0%, #2a2140 0%, var(--fons) 60%) fixed;
+    color: var(--text);
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    line-height: 1.45;
+}
+
+.pantalla {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 24px 16px 60px;
+}
+
+.capcalera {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-family: var(--pixel);
+    font-size: clamp(18px, 4vw, 28px);
+    color: var(--or);
+    text-shadow: 3px 3px 0 #000;
+    margin: 0;
+}
+
+h2 { margin: 6px 0 0; font-size: 20px; }
+
+.petit { color: var(--text-suau); font-size: 14px; margin: 4px 0; }
+
+code, pre { font-family: ui-monospace, "Cascadia Code", Consolas, monospace; }
+
+/* ---------- Botons ---------- */
+
+.boto {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--pedra-clara);
+    color: var(--text);
+    border: 2px solid var(--vora);
+    border-bottom-width: 4px;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: left;
+    text-decoration: none;
+}
+.boto:hover { border-color: var(--or); }
+.boto:active { transform: translateY(2px); border-bottom-width: 2px; }
+.boto .num {
+    font-family: var(--pixel);
+    font-size: 11px;
+    color: var(--or);
+}
+.boto.apagat { opacity: .5; }
+.boto-petit { padding: 8px 12px; font-size: 14px; }
+.boto-gran {
+    font-family: var(--pixel);
+    font-size: 13px;
+    background: var(--or);
+    color: #1b1400;
+    border-color: #a8801f;
+    padding: 16px 22px;
+    justify-content: center;
+}
+
+/* ---------- Avisos ---------- */
+
+.avis {
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 16px;
+    border: 2px solid;
+}
+.avis p { margin: 4px 0; }
+.avis pre { white-space: pre-wrap; margin: 8px 0; }
+.avis-groc { background: #3a3013; border-color: var(--or); }
+.avis-error { background: #3a1616; border-color: var(--vida-monstre); }
+.avis-bloqueig {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    background: #1d2540;
+    border-color: var(--blau);
+}
+.cadenat { font-size: 40px; }
+
+/* ---------- Inici ---------- */
+
+.inici { display: grid; gap: 20px; }
+.historia { font-size: 18px; color: var(--text-suau); margin: 0; }
+
+.camp { display: grid; gap: 6px; }
+.camp span { font-weight: 600; }
+.camp input {
+    font-size: 18px;
+    padding: 12px 14px;
+    border-radius: 8px;
+    border: 2px solid var(--vora);
+    background: var(--pedra);
+    color: var(--text);
+}
+.camp input:focus { outline: none; border-color: var(--or); }
+
+.classes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+}
+.classe input { position: absolute; opacity: 0; }
+.classe .targeta {
+    display: grid;
+    gap: 6px;
+    justify-items: center;
+    text-align: center;
+    height: 100%;
+    padding: 16px;
+    background: var(--pedra);
+    border: 2px solid var(--vora);
+    border-radius: 12px;
+    cursor: pointer;
+}
+.classe input:checked + .targeta {
+    border-color: var(--or);
+    box-shadow: 0 0 0 3px rgba(242, 193, 78, .25);
+}
+.classe input:focus-visible + .targeta { outline: 2px solid var(--blau); }
+
+.icona-gran { font-size: 52px; line-height: 1.1; }
+
+.stats {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px 12px;
+    font-size: 15px;
+    margin-top: 6px;
+}
+
+/* ---------- Progrés ---------- */
+
+.progres {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 0;
+    margin: 0 0 18px;
+}
+.progres li {
+    width: 34px;
+    height: 34px;
+    display: grid;
+    place-items: center;
+    border-radius: 6px;
+    background: var(--pedra);
+    border: 2px solid var(--vora);
+    font-family: var(--pixel);
+    font-size: 10px;
+    color: var(--text-suau);
+}
+.progres li.feta { background: #24412d; border-color: var(--vida); color: var(--text); }
+.progres li.actual { border-color: var(--or); color: var(--or); }
+
+/* ---------- Escena ---------- */
+
+.escena {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 16px;
+}
+.escena > .fitxa:only-child { grid-column: 1 / -1; max-width: 420px; justify-self: center; width: 100%; }
+
+.fitxa {
+    background: var(--pedra);
+    border: 2px solid var(--vora);
+    border-radius: 14px;
+    padding: 18px;
+    text-align: center;
+    min-width: 0;
+}
+.fitxa-monstre { border-color: #6b2f3a; }
+.fitxa-final.guanya { border-color: var(--or); }
+.fitxa-final.perd { border-color: var(--vida-monstre); }
+
+.vs {
+    font-family: var(--pixel);
+    color: var(--vida-monstre);
+    font-size: 16px;
+    text-shadow: 2px 2px 0 #000;
+}
+
+.barra {
+    height: 14px;
+    background: #0d0b12;
+    border-radius: 7px;
+    overflow: hidden;
+    margin-top: 12px;
+    border: 1px solid var(--vora);
+}
+.barra span {
+    display: block;
+    height: 100%;
+    background: var(--vida);
+    transition: width .4s ease;
+}
+.barra-monstre span { background: var(--vida-monstre); }
+
+.barra-text {
+    display: block;
+    margin-top: 6px;
+    font-size: 13px;
+    color: var(--text-suau);
+    overflow-wrap: anywhere;
+}
+
+.resum { list-style: none; padding: 0; margin: 10px 0 0; text-align: left; display: inline-grid; gap: 4px; }
+
+/* ---------- Registre ---------- */
+
+.registre {
+    background: #0d0b12;
+    border: 2px solid var(--vora);
+    border-radius: 10px;
+    padding: 10px 14px;
+    margin-bottom: 16px;
+    font-family: ui-monospace, Consolas, monospace;
+    font-size: 14px;
+}
+.registre p { margin: 3px 0; color: #6f6683; }
+.registre .ultim p { color: var(--text); }
+.registre .ultim p::before { content: "› "; color: var(--or); }
+
+/* ---------- Opcions ---------- */
+
+.opcions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 10px;
+}
+
+@media (max-width: 640px) {
+    .escena { grid-template-columns: 1fr; }
+    .vs { justify-self: center; }
+}
